@@ -1,0 +1,31 @@
+﻿#  Ignore node_modules and bower_components if present
+node_modules/
+bower_components/
+
+# Ignore Visual Studio temporary files, build results, and folders
+.vs/
+*.vsidx
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# NuGet packages
+*.nupkg
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# Others
+*.log
+*.tmp
+*.cache
+*.pdb
+*.mdb
+
+# Ignore all VS index files anywhere in the repo

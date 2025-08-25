@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="66b7c5063245460d8296bc5c24deae7c" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="ZeroHungerModel.CollectRequest" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHungerModel.Distribution" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHungerModel.Employee" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHungerModel.Restaurant" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="ZeroHungerModel.FK_dbo_CollectRequests_dbo_Employees_AssignedEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ZeroHungerModel.FK_dbo_CollectRequests_dbo_Restaurants_RestaurantId" ManuallyRouted="false" />
+        <AssociationConnector Association="ZeroHungerModel.FK_dbo_Distributions_dbo_CollectRequests_CollectRequestId" ManuallyRouted="false" />
+        <AssociationConnector Association="ZeroHungerModel.FK_dbo_Distributions_dbo_Employees_EmployeeId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
