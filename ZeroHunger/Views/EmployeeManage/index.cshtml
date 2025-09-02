@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ZeroHunger.DTOs.EmployeeDto>
+@{
+    ViewBag.Title = "Employees";
+}
+<h2>Employees</h2>
+<p>@Html.ActionLink("Create New Employee", "Create", null, new { @class = "btn btn-success" })</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact Info</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Name</td>
+                <td>@emp.ContactInfo</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = emp.Id }, new { @class = "btn btn-primary btn-sm" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = emp.Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

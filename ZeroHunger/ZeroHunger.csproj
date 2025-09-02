@@ -135,12 +135,22 @@
     <Compile Include="CollectRequest.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CollectRequestController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployeeManageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Distribution.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTOs\CollectRequestDto.cs" />
+    <Compile Include="DTOs\DistributionDto.cs" />
+    <Compile Include="DTOs\EmployeeDto.cs" />
     <Compile Include="DTOs\RestaurantDto.cs" />
+    <Compile Include="DTOs\UserCredentialsDto.cs" />
     <Compile Include="Employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -164,6 +174,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Restaurant.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCredentials.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -192,6 +205,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Model1.edmx.sql" />
     <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -240,6 +254,20 @@
     <Content Include="Views\Restaurant\Details.cshtml" />
     <Content Include="Views\Restaurant\Edit.cshtml" />
     <Content Include="Views\Restaurant\index.cshtml" />
+    <Content Include="Views\CollectRequest\Create.cshtml" />
+    <Content Include="Views\CollectRequest\MyRequests.cshtml" />
+    <Content Include="Views\Admin\PendingRequests.cshtml" />
+    <Content Include="Views\Admin\AssignEmployee.cshtml" />
+    <Content Include="Views\EmployeeManage\index.cshtml" />
+    <Content Include="Views\EmployeeManage\Create.cshtml" />
+    <Content Include="Views\EmployeeManage\Edit.cshtml" />
+    <Content Include="Views\EmployeeManage\Delete.cshtml" />
+    <Content Include="Views\Employee\AssignedRequests.cshtml" />
+    <Content Include="Views\Employee\MarkDistributed.cshtml" />
+    <Content Include="Views\CollectRequest\AllRequests.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Register\Restaurant.cshtml" />
+    <Content Include="Views\Register\Employee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

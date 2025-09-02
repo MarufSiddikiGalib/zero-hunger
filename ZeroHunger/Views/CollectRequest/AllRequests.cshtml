@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ZeroHunger.DTOs.CollectRequestDto>
+@{
+    ViewBag.Title = "All Collect Requests";
+}
+<h2>All Collect Requests</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Restaurant</th>
+            <th>Food Description</th>
+            <th>Max Preserve Time</th>
+            <th>Status</th>
+            <th>Assigned Employee</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var req in Model)
+        {
+            <tr>
+                <td>@req.RestaurantName</td>
+                <td>@req.FoodDescription</td>
+                <td>@req.MaxPreserveTime</td>
+                <td>@req.Status</td>
+                <td>@req.EmployeeName</td>
+            </tr>
+        }
+    </tbody>
+</table>

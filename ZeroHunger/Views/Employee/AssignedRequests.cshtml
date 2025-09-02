@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ZeroHunger.DTOs.CollectRequestDto>
+@{
+    ViewBag.Title = "My Assigned Collect Requests";
+}
+<h2>Assigned Collect Requests</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Food Description</th>
+            <th>Max Preserve Time</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var req in Model)
+        {
+            <tr>
+                <td>@req.FoodDescription</td>
+                <td>@req.MaxPreserveTime</td>
+                <td>@req.Status</td>
+                <td>
+                    @Html.ActionLink("Mark as Collected/Distributed", "MarkDistributed", new { id = req.Id }, new { @class = "btn btn-success btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

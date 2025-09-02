@@ -1,0 +1,22 @@
+﻿@model ZeroHunger.DTOs.CollectRequestDto
+
+@{
+    ViewBag.Title = "Create Collect Request";
+}
+
+<h2>Create Collect Request</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.RestaurantId)
+    <div class="form-group">
+        @Html.LabelFor(model => model.FoodDescription)
+        @Html.TextAreaFor(model => model.FoodDescription, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaxPreserveTime)
+        @Html.EditorFor(model => model.MaxPreserveTime, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Request</button>
+}
