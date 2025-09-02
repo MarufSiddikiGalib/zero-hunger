@@ -29,5 +29,6 @@ namespace ZeroHunger
         public virtual DbSet<Distribution> Distributions { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Restaurant> Restaurants { get; set; }
+        public virtual DbSet<UserCredentials> UserCredentials { get; set; }
     }
 }

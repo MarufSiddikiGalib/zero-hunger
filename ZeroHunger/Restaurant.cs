@@ -27,5 +27,6 @@ namespace ZeroHunger
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CollectRequest> CollectRequests { get; set; }
+        public virtual UserCredentials UserCredential { get; set; }
     }
 }

@@ -1,0 +1,23 @@
+﻿@model ZeroHunger.DTOs.CollectRequestDto
+@{
+    ViewBag.Title = "Mark Request as Collected/Distributed";
+}
+<h2>Mark as Collected/Distributed</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.FoodDescription)
+        @Html.DisplayFor(m => m.FoodDescription)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MaxPreserveTime)
+        @Html.DisplayFor(m => m.MaxPreserveTime)
+    </div>
+    <div class="form-group">
+        @Html.Label("Distribution Details")
+        @Html.TextArea("distributionDetails", null, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success">Complete</button>
+}

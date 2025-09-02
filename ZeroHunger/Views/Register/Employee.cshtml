@@ -1,0 +1,32 @@
+﻿@model ZeroHunger.DTOs.EmployeeDto
+
+@{
+    ViewBag.Title = "Employee Registration";
+}
+
+<h2>Employee Registration</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Employee Name" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ContactInfo)
+        @Html.TextBoxFor(m => m.ContactInfo, new { @class = "form-control", placeholder = "Contact Info" })
+        @Html.ValidationMessageFor(m => m.ContactInfo)
+    </div>
+    <hr />
+    <div class="form-group">
+        @Html.Label("Username")
+        @Html.TextBox("username", null, new { @class = "form-control", placeholder = "Choose a username" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Password")
+        @Html.Password("password", null, new { @class = "form-control", placeholder = "Choose a password" })
+    </div>
+    <button type="submit" class="btn btn-success">Register</button>
+}

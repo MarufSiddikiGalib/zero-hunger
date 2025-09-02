@@ -4,15 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ZeroHungerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="ZeroHungerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
         <EntityType Name="CollectRequests">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RestaurantId" Type="int" Nullable="false" />
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="RestaurantId" Nullable="false" Type="int" />
           <Property Name="FoodDescription" Type="nvarchar(max)" />
-          <Property Name="MaxPreserveTime" Type="datetime" Nullable="false" />
+          <Property Name="MaxPreserveTime" Nullable="false" Type="datetime" />
           <Property Name="Status" Type="nvarchar(max)" />
           <Property Name="AssignedEmployeeId" Type="int" />
         </EntityType>
@@ -20,32 +20,32 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CollectRequestId" Type="int" Nullable="false" />
-          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="CollectRequestId" Nullable="false" Type="int" />
+          <Property Name="EmployeeId" Nullable="false" Type="int" />
           <Property Name="DistributionDetails" Type="nvarchar(max)" />
-          <Property Name="DistributedAt" Type="datetime" Nullable="false" />
+          <Property Name="DistributedAt" Nullable="false" Type="datetime" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" Nullable="false" Type="nvarchar(max)" />
           <Property Name="ContactInfo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Restaurants">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" Nullable="false" Type="nvarchar(max)" />
           <Property Name="ContactInfo" Type="nvarchar(max)" />
           <Property Name="Address" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_dbo_CollectRequests_dbo_Employees_AssignedEmployeeId">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
-          <End Role="CollectRequests" Type="Self.CollectRequests" Multiplicity="*" />
+          <End Type="Self.Employees" Multiplicity="0..1" Role="Employees" />
+          <End Type="Self.CollectRequests" Multiplicity="*" Role="CollectRequests" />
           <ReferentialConstraint>
             <Principal Role="Employees">
               <PropertyRef Name="Id" />
@@ -56,10 +56,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_CollectRequests_dbo_Restaurants_RestaurantId">
-          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1">
+          <End Type="Self.Restaurants" Multiplicity="1" Role="Restaurants">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="CollectRequests" Type="Self.CollectRequests" Multiplicity="*" />
+          <End Type="Self.CollectRequests" Multiplicity="*" Role="CollectRequests" />
           <ReferentialConstraint>
             <Principal Role="Restaurants">
               <PropertyRef Name="Id" />
@@ -70,10 +70,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_Distributions_dbo_CollectRequests_CollectRequestId">
-          <End Role="CollectRequests" Type="Self.CollectRequests" Multiplicity="1">
+          <End Type="Self.CollectRequests" Multiplicity="1" Role="CollectRequests">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Distributions" Type="Self.Distributions" Multiplicity="*" />
+          <End Type="Self.Distributions" Multiplicity="*" Role="Distributions" />
           <ReferentialConstraint>
             <Principal Role="CollectRequests">
               <PropertyRef Name="Id" />
@@ -84,10 +84,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_Distributions_dbo_Employees_EmployeeId">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1">
+          <End Type="Self.Employees" Multiplicity="1" Role="Employees">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Distributions" Type="Self.Distributions" Multiplicity="*" />
+          <End Type="Self.Distributions" Multiplicity="*" Role="Distributions" />
           <ReferentialConstraint>
             <Principal Role="Employees">
               <PropertyRef Name="Id" />
@@ -103,20 +103,20 @@
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Restaurants" EntityType="Self.Restaurants" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_CollectRequests_dbo_Employees_AssignedEmployeeId" Association="Self.FK_dbo_CollectRequests_dbo_Employees_AssignedEmployeeId">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="CollectRequests" EntitySet="CollectRequests" />
+            <End EntitySet="Employees" Role="Employees" />
+            <End EntitySet="CollectRequests" Role="CollectRequests" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_CollectRequests_dbo_Restaurants_RestaurantId" Association="Self.FK_dbo_CollectRequests_dbo_Restaurants_RestaurantId">
-            <End Role="Restaurants" EntitySet="Restaurants" />
-            <End Role="CollectRequests" EntitySet="CollectRequests" />
+            <End EntitySet="Restaurants" Role="Restaurants" />
+            <End EntitySet="CollectRequests" Role="CollectRequests" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Distributions_dbo_CollectRequests_CollectRequestId" Association="Self.FK_dbo_Distributions_dbo_CollectRequests_CollectRequestId">
-            <End Role="CollectRequests" EntitySet="CollectRequests" />
-            <End Role="Distributions" EntitySet="Distributions" />
+            <End EntitySet="CollectRequests" Role="CollectRequests" />
+            <End EntitySet="Distributions" Role="Distributions" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Distributions_dbo_Employees_EmployeeId" Association="Self.FK_dbo_Distributions_dbo_Employees_EmployeeId">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Distributions" EntitySet="Distributions" />
+            <End EntitySet="Employees" Role="Employees" />
+            <End EntitySet="Distributions" Role="Distributions" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -158,6 +158,7 @@
           <Property Name="ContactInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CollectRequests" Relationship="Self.FK_dbo_CollectRequests_dbo_Employees_AssignedEmployeeId" FromRole="Employees" ToRole="CollectRequests" />
           <NavigationProperty Name="Distributions" Relationship="Self.FK_dbo_Distributions_dbo_Employees_EmployeeId" FromRole="Employees" ToRole="Distributions" />
+          <NavigationProperty Name="UserCredential" Relationship="ZeroHungerModel.UserCredentialsEmployee" FromRole="Employee" ToRole="UserCredentials" />
         </EntityType>
         <EntityType Name="Restaurant">
           <Key>
@@ -168,6 +169,7 @@
           <Property Name="ContactInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CollectRequests" Relationship="Self.FK_dbo_CollectRequests_dbo_Restaurants_RestaurantId" FromRole="Restaurants" ToRole="CollectRequests" />
+          <NavigationProperty Name="UserCredential" Relationship="ZeroHungerModel.UserCredentialsRestaurant" FromRole="Restaurant" ToRole="UserCredentials" />
         </EntityType>
         <Association Name="FK_dbo_CollectRequests_dbo_Employees_AssignedEmployeeId">
           <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
@@ -244,13 +246,43 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Distributions" EntitySet="Distributions" />
           </AssociationSet>
+          <EntitySet Name="UserCredentials" EntityType="ZeroHungerModel.UserCredentials" />
+          <AssociationSet Name="UserCredentialsRestaurant" Association="ZeroHungerModel.UserCredentialsRestaurant">
+            <End Role="UserCredentials" EntitySet="UserCredentials" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="UserCredentialsEmployee" Association="ZeroHungerModel.UserCredentialsEmployee">
+            <End Role="UserCredentials" EntitySet="UserCredentials" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="UserCredentials">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" Nullable="false" />
+          <Property Name="UserType" Type="String" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Restaurant" Relationship="ZeroHungerModel.UserCredentialsRestaurant" FromRole="UserCredentials" ToRole="Restaurant" />
+          <NavigationProperty Name="Employee" Relationship="ZeroHungerModel.UserCredentialsEmployee" FromRole="UserCredentials" ToRole="Employee" />
+        </EntityType>
+        <Association Name="UserCredentialsRestaurant">
+          <End Type="ZeroHungerModel.UserCredentials" Role="UserCredentials" Multiplicity="1" />
+          <End Type="ZeroHungerModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+        </Association>
+        <Association Name="UserCredentialsEmployee">
+          <End Type="ZeroHungerModel.UserCredentials" Role="UserCredentials" Multiplicity="1" />
+          <End Type="ZeroHungerModel.Employee" Role="Employee" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ZeroHungerModelStoreContainer" CdmEntityContainer="ZeroHungerEntities">
+        <EntityContainerMapping CdmEntityContainer="ZeroHungerEntities" StorageEntityContainer="ZeroHungerModelStoreContainer">
           <EntitySetMapping Name="CollectRequests">
             <EntityTypeMapping TypeName="ZeroHungerModel.CollectRequest">
               <MappingFragment StoreEntitySet="CollectRequests">

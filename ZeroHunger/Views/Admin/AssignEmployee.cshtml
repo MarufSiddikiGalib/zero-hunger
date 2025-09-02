@@ -1,0 +1,25 @@
+﻿@model ZeroHunger.DTOs.CollectRequestDto
+
+@{
+    ViewBag.Title = "Assign Employee";
+}
+
+<h2>Assign Employee to Collect Request</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-group">
+        @Html.LabelFor(model => model.FoodDescription)
+        @Html.DisplayFor(model => model.FoodDescription)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaxPreserveTime)
+        @Html.DisplayFor(model => model.MaxPreserveTime)
+    </div>
+    <div class="form-group">
+        @Html.Label("Assign Employee")
+        @Html.DropDownList("AssignedEmployeeId", (SelectList)ViewBag.Employees, "Select Employee", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success">Assign</button>
+}
